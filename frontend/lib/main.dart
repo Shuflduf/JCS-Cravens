@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'menu_item.dart';
 
 void main() {
   runApp(const MyApp());
@@ -77,12 +78,13 @@ class TodayMenu extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.all(8.0),
       child: Column(
-        children: [
-          MenuItem(content: "Soup"),
-          MenuItem(content: "Chicken"),
-          MenuItem(content: "Beef"),
-        ],
-      ),
+        children: ,
+          //children: [
+          //  MenuItem(content: "Soup"),
+          //  MenuItem(content: "Chicken"),
+          //  MenuItem(content: "Beef"),
+          //],
+          ),
     );
   }
 }
@@ -94,55 +96,6 @@ class UpcomingMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: Text('Upcoming Menu'),
-    );
-  }
-}
-
-class MenuItem extends StatefulWidget {
-  const MenuItem({super.key, required this.content});
-
-  final String content;
-
-  @override
-  MenuItemState createState() => MenuItemState();
-}
-
-class MenuItemState extends State<MenuItem> {
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blue,
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            shape: const LinearBorder()),
-        onPressed: () {},
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                widget.content,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 24.0,
-                  fontFamily: "RobotoMono",
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 2.0,
-                ),
-              ),
-              const Text(
-                "FOOD",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0,
-                  fontFamily: "RobotoMono",
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
