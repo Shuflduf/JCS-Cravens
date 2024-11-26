@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'menu_item.dart';
 
 void main() {
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Craven Menu',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
@@ -25,10 +27,10 @@ class MainMenu extends StatefulWidget {
   const MainMenu({super.key});
 
   @override
-  _MainMenuState createState() => _MainMenuState();
+  MainMenuState createState() => MainMenuState();
 }
 
-class _MainMenuState extends State<MainMenu> {
+class MainMenuState extends State<MainMenu> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
@@ -45,13 +47,24 @@ class _MainMenuState extends State<MainMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black87,
       appBar: AppBar(
         title: const Text('Craven Menu'),
+        centerTitle: true,
+        backgroundColor: Colors.black54,
+        titleTextStyle: const TextStyle(
+          fontFamily: "RobotoMono",
+          fontSize: 36.0,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 2.0,
+          color: Colors.white,
+        ),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black54,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.today),
@@ -63,7 +76,8 @@ class _MainMenuState extends State<MainMenu> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.red,
+        selectedItemColor: Colors.blue[400],
+        unselectedItemColor: Colors.white,
         onTap: _onItemTapped,
       ),
     );
@@ -75,16 +89,20 @@ class TodayMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double margins = 16.0;
     return const Padding(
-      padding: EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(margins),
       child: Column(
-        children: ,
-          //children: [
-          //  MenuItem(content: "Soup"),
-          //  MenuItem(content: "Chicken"),
-          //  MenuItem(content: "Beef"),
-          //],
-          ),
+        children: [
+          MenuItem(content: "Soup", type: "Main", enabled: true),
+          SizedBox(height: margins),
+          MenuItem(content: "Chicken", type: "Side", enabled: true),
+          SizedBox(height: margins),
+          MenuItem(content: "Beef", type: "Dessert", enabled: false),
+          SizedBox(height: margins),
+          MenuItem(content: "Orange Juice", type: "Drink", enabled: true),
+        ],
+      ),
     );
   }
 }

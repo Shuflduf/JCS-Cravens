@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MenuItem extends StatefulWidget {
-  const MenuItem({super.key, required this.content});
+  const MenuItem({super.key, required this.content, required this.type, required this.enabled});
 
-  final String content;
+  final String content, type;
+  final bool enabled;
 
   @override
   MenuItemState createState() => MenuItemState();
@@ -15,10 +16,11 @@ class MenuItemState extends State<MenuItem> {
     return Expanded(
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.blue[400],
+          disabledBackgroundColor: Colors.blue[800],
           shape: const LinearBorder(),
         ),
-        onPressed: () {},
+        onPressed: (widget.enabled ? (() {}) : (null)),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -27,15 +29,15 @@ class MenuItemState extends State<MenuItem> {
                 widget.content,
                 style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 24.0,
+                  fontSize: 48.0,
                   fontFamily: "RobotoMono",
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2.0,
                 ),
               ),
-              const Text(
-                "FOOD",
-                style: TextStyle(
+              Text(
+                widget.type,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16.0,
                   fontFamily: "RobotoMono",
