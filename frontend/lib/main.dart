@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'menu_item.dart';
+import 'upcoming.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +36,7 @@ class MainMenuState extends State<MainMenu> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     TodayMenu(),
-    UpcomingMenu(),
+    UpcomingMenu(content: "a"),
   ];
 
   void _onItemTapped(int index) {
@@ -103,17 +104,6 @@ class TodayMenu extends StatelessWidget {
           MenuItem(content: "Orange Juice", type: "Drink", enabled: true),
         ],
       ),
-    );
-  }
-}
-
-class UpcomingMenu extends StatelessWidget {
-  const UpcomingMenu({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Upcoming Menu'),
     );
   }
 }
