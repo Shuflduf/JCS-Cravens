@@ -36,7 +36,7 @@ class MainMenuState extends State<MainMenu> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     TodayMenu(),
-    UpcomingMenu(content: "a"),
+    UpcomingMenu(),
   ];
 
   void _onItemTapped(int index) {
