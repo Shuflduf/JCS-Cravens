@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/menu_item.dart';
 
-const List<String> days = ["Monday", "Tuesday"];
+const List<String> days = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday"
+];
 
 class UpcomingMenu extends StatefulWidget {
   const UpcomingMenu({super.key});
 
-  static const List<List<String>> data = [["One", "Two"], ["One", "Two"]];
+  static const List<List<String>> data = [
+    ["One", "Two"],
+    ["Three", "Four"],
+    ["Five", "Six"],
+    ["Seven", "Eight"],
+  ];
 
   @override
   State<UpcomingMenu> createState() => _UpcomingMenuState();
@@ -15,22 +26,29 @@ class UpcomingMenu extends StatefulWidget {
 class _UpcomingMenuState extends State<UpcomingMenu> {
   @override
   Widget build(BuildContext context) {
-    const double margins = 16.0;
     List<List<String>> data = UpcomingMenu.data;
     return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: ListView.builder(
+      padding: const EdgeInsets.all(8.0),
+      child: ListView(
         scrollDirection: Axis.horizontal,
-        itemCount: data.length,
-        prototypeItem: Column(),
-        itemBuilder: (context, index) {
+        children: data.asMap().keys.map((col) {
           return Column(
-            children: data[index]
-              .map((i) {
-                return FixedWidthMenuItem(content: i);
-              }).toList(),
+            children: [
+              Text(
+                days[col],
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                  fontFamily: "RobotoMono",
+                  letterSpacing: 2.0,
+                ),
+              ),
+              ...data[col].map((item) {
+                return FixedWidthMenuItem(content: item);
+              })
+            ],
           );
-        },
+        }).toList(),
       ),
     );
   }
@@ -49,9 +67,12 @@ class _FixedWidthMenuItemState extends State<FixedWidthMenuItem> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: SizedBox(
-        width: 200.0,
-        child: MenuItem(content: widget.content, type: "Food", enabled: false),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(
+            width: 200.0,
+            child:
+                MenuItem(content: widget.content, type: "Food", enabled: false)),
       ),
     );
   }
