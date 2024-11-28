@@ -24,6 +24,7 @@ class MenuItemState extends State<MenuItem> {
       child: Container(
         color: widget.highlighted ? Colors.blue[400] : Colors.blue[800],
         width: 400,
+        padding: const EdgeInsets.all(8.0),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
