@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/place_order_prompt.dart';
 
 class MenuItem extends StatefulWidget {
   const MenuItem(
@@ -27,7 +28,16 @@ class MenuItemState extends State<MenuItem> {
             disabledBackgroundColor: Colors.blue[800],
             shape: const LinearBorder(),
           ),
-          onPressed: (widget.enabled ? (() {}) : (null)),
+          onPressed: (widget.enabled
+            ? (() {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return OrderPrompt(menuReference: widget);
+                },
+              );
+            })
+            : (null)),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
