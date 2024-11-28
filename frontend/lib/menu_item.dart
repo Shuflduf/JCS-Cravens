@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class MenuItem extends StatefulWidget {
@@ -25,8 +26,10 @@ class MenuItemState extends State<MenuItem> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              AutoSizeText(
                 widget.content,
+                maxLines: 2,
+                textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 48.0,
@@ -37,6 +40,7 @@ class MenuItemState extends State<MenuItem> {
               ),
               Text(
                 widget.type,
+                textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16.0,

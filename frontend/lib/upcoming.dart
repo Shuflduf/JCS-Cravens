@@ -13,7 +13,7 @@ class UpcomingMenu extends StatefulWidget {
   const UpcomingMenu({super.key});
 
   static const List<List<String>> data = [
-    ["One", "Two"],
+    ["One", "Two", "Two and a Half"],
     ["Three", "Four"],
     ["Five", "Six"],
     ["Seven", "Eight"],
