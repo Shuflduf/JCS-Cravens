@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/menu_item.dart';
 
+// Saturday and Sunday shouldn't be used
 const List<String> days = [
+  "Saturday",
   "Monday",
   "Tuesday",
   "Wednesday",
   "Thursday",
-  "Friday"
+  "Friday",
+  "Sunday",
 ];
 
 class UpcomingMenu extends StatefulWidget {
@@ -17,6 +20,7 @@ class UpcomingMenu extends StatefulWidget {
     ["Three", "Four"],
     ["Five", "Six"],
     ["Seven", "Eight"],
+    ["Nine", "Ten"]
   ];
 
   @override
@@ -35,7 +39,7 @@ class _UpcomingMenuState extends State<UpcomingMenu> {
           return Column(
             children: [
               Text(
-                days[col],
+                days[col + 1],
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16.0,
@@ -44,7 +48,9 @@ class _UpcomingMenuState extends State<UpcomingMenu> {
                 ),
               ),
               ...data[col].map((item) {
-                return FixedWidthMenuItem(content: item);
+                int weekday = DateTime.now().weekday - 1;
+                return FixedWidthMenuItem(
+                    content: item, highlighted: col == weekday);
               })
             ],
           );
@@ -55,9 +61,11 @@ class _UpcomingMenuState extends State<UpcomingMenu> {
 }
 
 class FixedWidthMenuItem extends StatefulWidget {
-  const FixedWidthMenuItem({super.key, required this.content});
+  const FixedWidthMenuItem(
+      {super.key, required this.content, required this.highlighted});
 
   final String content;
+  final bool highlighted;
 
   @override
   State<FixedWidthMenuItem> createState() => _FixedWidthMenuItemState();
@@ -69,8 +77,11 @@ class _FixedWidthMenuItemState extends State<FixedWidthMenuItem> {
     return Expanded(
       child: SizedBox(
           width: 200.0,
-          child:
-              MenuItem(content: widget.content, type: "Food", enabled: false)),
+          child: MenuItem(
+            content: widget.content,
+            price: "\$3.99",
+            highlighted: widget.highlighted,
+          )),
     );
   }
 }
