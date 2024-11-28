@@ -89,19 +89,18 @@ class TodayMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double margins = 16.0;
-    return const Padding(
-      padding: EdgeInsets.all(margins),
+    const List<String> menu = [
+      "Soup",
+      "Chicken",
+      "Beef",
+      "Orange Juice",
+    ];
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
       child: Column(
-        children: [
-          MenuItem(content: "Soup", type: "Main", enabled: true),
-          SizedBox(height: margins),
-          MenuItem(content: "Chicken", type: "Side", enabled: true),
-          SizedBox(height: margins),
-          MenuItem(content: "Beef", type: "Dessert", enabled: false),
-          SizedBox(height: margins),
-          MenuItem(content: "Orange Juice", type: "Drink", enabled: true),
-        ],
+        children: menu.map((item) {
+          return MenuItem(content: item, type: "Food", enabled: true);
+        }).toList(),
       ),
     );
   }
