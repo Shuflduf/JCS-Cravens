@@ -7,7 +7,6 @@ Menu app for my school to show current and upcoming menu items for cafeteria
 ## Features
 - Showing items for each day of the week, even though only Monday-Friday will be used
 - Dynamic size adjustment for elements
-- 
 
 ## Installation
 1. Clone the repo
